@@ -53,6 +53,9 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="6dp"
                     android:hint="@string/enter_id"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
                     app:layout_constraintTop_toBottomOf="@+id/tv_id_title" />
 
                 <requestFocus />
@@ -74,6 +77,9 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="6dp"
                     android:hint="@string/enter_password"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
                     app:layout_constraintTop_toBottomOf="@+id/tv_password_title" />
 
                 <TextView
@@ -93,6 +99,9 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="6dp"
                     android:hint="@string/enter_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name_title" />
 
                 <TextView
@@ -112,6 +121,9 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="6dp"
                     android:hint="@string/enter_specialty"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
                     app:layout_constraintTop_toBottomOf="@+id/tv_specialty_title" />
 
 
