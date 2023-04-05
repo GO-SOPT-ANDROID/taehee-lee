@@ -1,9 +1,11 @@
 package org.android.go.sopt
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import org.android.go.sopt.base.BindingActivity
@@ -28,6 +30,9 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         setSignUpResult()
         clickLoginButton()
         clickSignUpButton()
+        binding.layoutLogin.setOnClickListener {
+            hideKeyboard()
+        }
 
     }
 
@@ -80,6 +85,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         binding.btnSignUp.setOnClickListener {
             resultLauncher.launch(Intent(this, SignUpActivity::class.java))
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 
 

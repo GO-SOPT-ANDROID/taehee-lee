@@ -1,7 +1,9 @@
 package org.android.go.sopt
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import org.android.go.sopt.LoginActivity.Companion.USER_INFO
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivitySignUpBinding
@@ -15,6 +17,9 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         setContentView(binding.root)
 
         clickSignUpCompleteBtn()
+        binding.layoutSignUp.setOnClickListener {
+            hideKeyboard()
+        }
     }
 
     private fun checkSignUpValid(): Boolean {
@@ -45,6 +50,12 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
             passUserData()
         }
     }
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+    }
+
 
 
 }
