@@ -13,4 +13,22 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TextAppearance.Title.Large" parent="">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.SubTitle.large.grey" parent="">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/grey_700</item>
+    </style>
+    <style name="TextAppearance.SubTitle.large.black" parent="">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+
 </resources>
