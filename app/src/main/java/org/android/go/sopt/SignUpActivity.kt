@@ -10,8 +10,6 @@ import org.android.go.sopt.databinding.ActivitySignUpBinding
 import org.android.go.sopt.model.UserInfo
 
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -30,7 +28,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
 
     }
 
-    private fun passUserData(){
+    private fun passUserData() {
         if (checkSignUpValid()) {
             val userInfo = UserInfo(
                 binding.etId.text.toString(),
@@ -55,7 +53,6 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
-
 
 
 }

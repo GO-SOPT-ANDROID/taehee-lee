@@ -16,4 +16,5 @@
     <string name="login_success">로그인에 성공하였습니다.</string>
     <string name="login_fail">로그인에 실패하였습니다.</string>
     <string name="sign_up_complete_message">회원가입이 완료되었습니다.</string>
+    <string name="auto_login_success_message">자돟 로그인 되었습니다.</string>
 </resources>
