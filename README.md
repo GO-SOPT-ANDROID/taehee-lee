@@ -4,6 +4,8 @@
 ### 1주차 심화 과제
 [Activity 생명주기 정리 노션](https://taehi.notion.site/Activity-LifeCycle-31cf23a7be7941419c0130131db68d51)
 
+### 2주차 심화 과제
+[Fragment 생명주기 정리 노션](https://taehi.notion.site/Fragment-LifeCycle-b25c16ac2d564e1fb5edce1481c0710e)
 ## 템플릿 설명
 레포지터리에는 총 2개의 브랜치가 있습니다.
 ### main
