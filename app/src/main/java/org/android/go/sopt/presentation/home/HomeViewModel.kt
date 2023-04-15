@@ -1,6 +1,7 @@
-package org.android.go.sopt
+package org.android.go.sopt.presentation.home
 
 import androidx.lifecycle.ViewModel
+import org.android.go.sopt.R
 import org.android.go.sopt.model.Animal
 
 class HomeViewModel : ViewModel() {
@@ -9,7 +10,7 @@ class HomeViewModel : ViewModel() {
 
         Animal(
             image = R.drawable.ic_tibet,
-            animal = "티뱃 여우",
+            animal = "티벳여우",
             species = "포유류"
         ),
         Animal(

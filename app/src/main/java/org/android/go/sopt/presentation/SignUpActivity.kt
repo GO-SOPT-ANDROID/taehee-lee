@@ -1,10 +1,11 @@
-package org.android.go.sopt
+package org.android.go.sopt.presentation
 
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
-import org.android.go.sopt.LoginActivity.Companion.USER_INFO
+import org.android.go.sopt.R
+import org.android.go.sopt.presentation.LoginActivity.Companion.USER_INFO
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivitySignUpBinding
 import org.android.go.sopt.model.UserInfo
