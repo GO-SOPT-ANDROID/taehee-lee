@@ -3,19 +3,30 @@ package org.android.go.sopt.presentation.home
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.android.go.sopt.databinding.ItemAnimalBinding
 import org.android.go.sopt.model.Animal
 
-class AnimalAdapter(context: Context) : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
+class AnimalAdapter(context: Context) :
+    ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(AnimalDiffCallback()) {
 
     private val inflater by lazy { LayoutInflater.from(context) }
-    private var animalList: List<Animal> = emptyList()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
+        val binding = ItemAnimalBinding.inflate(inflater, parent, false)
+        return AnimalViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
+        holder.onBind(getItem(position))
+    }
 
     class AnimalViewHolder(
         private val binding: ItemAnimalBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: Animal) {
+            // TODO coil로 바꾸기
             binding.ivTibet.setImageDrawable(binding.root.context.getDrawable(data.image))
             binding.tvAnimal.text = data.animal
             binding.tvSpecies.text = data.species
@@ -23,22 +34,15 @@ class AnimalAdapter(context: Context) : RecyclerView.Adapter<AnimalAdapter.Anima
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
-        val binding = ItemAnimalBinding.inflate(inflater, parent, false)
-        return AnimalViewHolder(binding)
+}
+
+class AnimalDiffCallback : DiffUtil.ItemCallback<Animal>() {
+    override fun areItemsTheSame(oldItem: Animal, newItem: Animal): Boolean {
+        return oldItem.animal == newItem.animal
     }
 
-    override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
-        holder.onBind(animalList[position])
+    override fun areContentsTheSame(oldItem: Animal, newItem: Animal): Boolean {
+        return oldItem == newItem
     }
-
-    override fun getItemCount() = animalList.size
-
-    fun setAnimalList(animalList: List<Animal>){
-
-        this.animalList = animalList
-        notifyDataSetChanged()
-    }
-
 
 }
