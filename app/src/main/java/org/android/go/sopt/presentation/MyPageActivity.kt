@@ -14,16 +14,24 @@ class MyPageActivity : BindingActivity<ActivityMyPageBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        initLayout()
+        selectFragment()
+        reselectFragment()
+
+    }
+
+    private fun initLayout() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.home_container)
         if (currentFragment == null) {
             supportFragmentManager.beginTransaction().add(R.id.home_container, HomeFragment())
                 .commit()
             binding.bnvHome.selectedItemId = R.id.home_menu
-
         }
+    }
 
-        binding.bnvHome.setOnItemSelectedListener{
-            when(it.itemId){
+    private fun selectFragment() {
+        binding.bnvHome.setOnItemSelectedListener {
+            when (it.itemId) {
                 R.id.home_menu -> {
                     changeFragment(HomeFragment())
                 }
@@ -37,9 +45,18 @@ class MyPageActivity : BindingActivity<ActivityMyPageBinding>(R.layout.activity_
             }
             return@setOnItemSelectedListener true
         }
-
-
     }
+
+
+    private fun reselectFragment() {
+        binding.bnvHome.setOnItemReselectedListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.home_container)
+            if (currentFragment is RecyclerViewScrollable) {
+                currentFragment.scrollToTop()
+            }
+        }
+    }
+
 
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager

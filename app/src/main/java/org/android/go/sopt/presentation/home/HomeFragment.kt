@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import org.android.go.sopt.databinding.FragmentHomeBinding
+import org.android.go.sopt.presentation.RecyclerViewScrollable
 
-class HomeFragment: Fragment() {
+class HomeFragment : Fragment(), RecyclerViewScrollable {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding
@@ -38,11 +39,15 @@ class HomeFragment: Fragment() {
 
     }
 
-    private fun setAdapter(){
+    private fun setAdapter() {
         val animalTitleAdapter = TitleAdapter(requireContext())
         val animalAdapter = AnimalAdapter(requireContext())
         binding.rvAnimals.adapter = ConcatAdapter(animalTitleAdapter, animalAdapter)
         animalAdapter.setAnimalList(viewModel.mockAnimalList)
+    }
+
+    override fun scrollToTop() {
+        binding.rvAnimals.layoutManager?.scrollToPosition(0)
     }
 
 
