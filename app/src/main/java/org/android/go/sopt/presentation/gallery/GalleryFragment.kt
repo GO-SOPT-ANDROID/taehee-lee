@@ -26,7 +26,7 @@ class GalleryFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         super.onDestroy()
         _binding = null
     }
