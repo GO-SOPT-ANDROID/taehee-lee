@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import org.android.go.sopt.databinding.ItemAnimalBinding
 import org.android.go.sopt.model.Animal
 
@@ -26,8 +27,7 @@ class AnimalAdapter(context: Context) :
         private val binding: ItemAnimalBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: Animal) {
-            // TODO coil로 바꾸기
-            binding.ivTibet.setImageDrawable(binding.root.context.getDrawable(data.image))
+            binding.ivTibet.load(data.image)
             binding.tvAnimal.text = data.animal
             binding.tvSpecies.text = data.species
         }
