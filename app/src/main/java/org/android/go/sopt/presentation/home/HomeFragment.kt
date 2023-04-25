@@ -51,11 +51,10 @@ class HomeFragment : Fragment(), RecyclerViewScrollable {
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
-
     private fun setAdapter() {
         val animalTitleAdapter = TitleAdapter(requireContext())
         val animalAdapter = AnimalAdapter(requireContext())
