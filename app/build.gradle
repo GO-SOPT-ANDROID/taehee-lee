@@ -42,11 +42,11 @@ android {
 dependencies {
 
     // Coil
-    implementation "io.coil-kt:coil: $coilVersion"
+    implementation "io.coil-kt:coil:$coilVersion"
 
     // Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
-    
+
     // MotionLayout
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
 
