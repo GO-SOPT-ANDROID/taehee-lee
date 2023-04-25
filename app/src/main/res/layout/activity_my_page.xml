@@ -10,61 +10,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MyPageActivity">
+        tools:context=".presentation.MyPageActivity">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_tibet"
-            android:layout_width="100dp"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/home_container"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_tibet"
-            android:layout_marginStart="40dp"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="80dp" />
+            app:layout_constraintBottom_toTopOf="@id/bnv_home"
+            />
 
-        <TextView
-            android:id="@+id/tv_name_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이름"
-            style="@style/TextAppearance.SubTitle.large.black"
-            android:layout_marginTop="48dp"
-            app:layout_constraintStart_toStartOf="@+id/iv_tibet"
-            app:layout_constraintTop_toBottomOf="@+id/iv_tibet" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_title"
-            app:layout_constraintStart_toStartOf="@id/tv_name_title"
-            android:layout_marginTop="6dp"
-            android:textSize="18sp"
-            android:textColor="@color/grey_700"
-            tools:text="이태희" />
-
-        <TextView
-            android:id="@+id/tv_specialty_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="특기"
-            style="@style/TextAppearance.SubTitle.large.black"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="@+id/iv_tibet"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-        <TextView
-            android:id="@+id/tv_specialty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_specialty_title"
-            app:layout_constraintStart_toStartOf="@id/tv_name_title"
-            android:layout_marginTop="6dp"
-            android:textSize="18sp"
-            android:textColor="@color/grey_700"
-            tools:text="등산하기" />
-
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bnv_height"
+            app:menu="@menu/bnv_menu"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

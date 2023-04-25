@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:showPaths="true"
+    app:layoutDescription="@xml/fragment_gallery_scene">
+
+    <View
+        android:id="@+id/button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/deep_orange_600" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
+

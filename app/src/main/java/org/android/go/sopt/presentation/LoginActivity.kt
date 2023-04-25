@@ -1,4 +1,4 @@
-package org.android.go.sopt
+package org.android.go.sopt.presentation
 
 import android.app.Activity
 import android.content.Context
@@ -8,9 +8,10 @@ import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import org.android.go.sopt.GoSoptApplication
+import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
-import org.android.go.sopt.model.GoSoptSharedPreference
 import org.android.go.sopt.model.UserInfo
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showSnackbar
