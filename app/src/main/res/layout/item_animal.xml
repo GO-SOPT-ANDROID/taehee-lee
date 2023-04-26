@@ -23,8 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        style="@style/TextAppearance.HaeTi.BodyLarge"
         app:layout_constraintBottom_toBottomOf="@+id/tv_species"
         app:layout_constraintEnd_toStartOf="@id/tv_species"
         app:layout_constraintTop_toTopOf="@+id/tv_species"
@@ -37,7 +36,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
-        android:textSize="16sp"
+        style="@style/TextAppearance.HaeTi.BodyMedium.grey_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/mammal" />

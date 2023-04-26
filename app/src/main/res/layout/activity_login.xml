@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/tv_go_sopt"
-            style="@style/TextAppearance.Title.Large"
+            style="@style/TextAppearance.HaeTi.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/tv_id_title"
-            style="@style/TextAppearance.SubTitle.large.grey"
+            style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/tv_password_title"
-            style="@style/TextAppearance.SubTitle.large.grey"
+            style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"

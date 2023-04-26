@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/tv_animal_title"
-        style="@style/TextAppearance.Title.Large"
+        style="@style/TextAppearance.HaeTi.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
