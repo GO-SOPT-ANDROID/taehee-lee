@@ -14,7 +14,6 @@ import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.model.UserInfo
 import org.android.go.sopt.util.extension.parcelable
-import org.android.go.sopt.util.extension.showSnackbar
 import org.android.go.sopt.util.extension.showToast
 
 class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
@@ -24,7 +23,6 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
     private var name: String? = null
     private var specialty: String? = null
     var userInput: UserInfo? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,21 +45,16 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
                 if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
 
                 val userData = result.data ?: return@registerForActivityResult
-
                 val userInfo = userData.parcelable<UserInfo>(USER_INFO)
 
-
                 if (userInfo != null) {
-                    showSnackbar(binding.root, getString(R.string.sign_up_complete_message))
+                    binding.root.showToast(getString(R.string.sign_up_complete_message))
                     GoSoptApplication.prefs.setUserInfo(userInfo)
                     id = userInfo.id
                     password = userInfo.password
                     name = userInfo.name
                     specialty = userInfo.specialty
-
-
                 }
-
 
             }
     }
@@ -71,14 +64,14 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         password?.let { Log.e("회원가입 pw값", it) }
 
         if (binding.etId.text.toString() == id && binding.etPassword.text.toString() == password) {
-            showToast(this, getString(R.string.login_success))
+            binding.root.showToast(getString(R.string.login_success))
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("specialty", specialty)
             startActivity(intent)
 
         } else {
-            showToast(this, getString(R.string.login_fail))
+            binding.root.showToast(getString(R.string.login_fail))
         }
     }
 
@@ -110,13 +103,12 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
                 putExtra("name", savedName)
                 putExtra("specialty", savedSpecialty)
             }
-            showToast(this, getString(R.string.auto_login_success_message))
+            binding.root.showToast(getString(R.string.auto_login_success_message))
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }
     }
-
 
     companion object {
         const val USER_INFO = "user_info"

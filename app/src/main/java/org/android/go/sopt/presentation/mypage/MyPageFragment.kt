@@ -10,7 +10,6 @@ import org.android.go.sopt.base.BindingFragment
 import org.android.go.sopt.databinding.FragmentMyPageBinding
 import org.android.go.sopt.model.GoSoptSharedPreference
 import org.android.go.sopt.presentation.LoginActivity
-import org.android.go.sopt.util.extension.showSnackbar
 import org.android.go.sopt.util.extension.showToast
 
 class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
@@ -38,11 +37,11 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
             .setNegativeButton(
                 "아니오"
             ) { _, _ ->
-                showToast(requireContext(), "로그아웃을 취소합니다.")
+                binding.root.showToast(getString(R.string.cancel_logout))
             }
-            .setPositiveButton("예") { p0, p1 ->
+            .setPositiveButton("예") { _, _ ->
                 deleteUserData()
-                showSnackbar(binding.root, "로그아웃 하였습니다.")
+                binding.root.showToast(getString(R.string.logout_done))
                 startActivity(Intent(requireContext(), LoginActivity::class.java))
             }
             .create()
