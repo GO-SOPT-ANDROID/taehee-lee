@@ -32,7 +32,7 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
 
     private fun showLogoutDialog(): AlertDialog.Builder {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("로그아웃 하시겠습니까?")
+        builder.setTitle(getString(R.string.ask_logout))
             .setCancelable(false)
             .setNegativeButton(
                 "아니오"

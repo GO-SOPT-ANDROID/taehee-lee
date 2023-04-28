@@ -25,4 +25,7 @@
     <string name="search">Search</string>
     <string name="my_page">My Page</string>
     <string name="logout">로그아웃</string>
+    <string name="cancel_logout">로그아웃을 취소합니다.</string>
+    <string name="logout_done">로그아웃 하였습니다.</string>
+    <string name="ask_logout">로그아웃 하시겠습니까?</string>
 </resources>

@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -60,9 +59,6 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
     }
 
     private fun checkInfoValid() {
-        id?.let { Log.e("회원가입 id값", it) }
-        password?.let { Log.e("회원가입 pw값", it) }
-
         if (binding.etId.text.toString() == id && binding.etPassword.text.toString() == password) {
             binding.root.showToast(getString(R.string.login_success))
             val intent = Intent(this, HomeActivity::class.java)
