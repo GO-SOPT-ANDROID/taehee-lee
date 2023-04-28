@@ -20,4 +20,9 @@
     <string name="tibetan_fox">티벳여우</string>
     <string name="mammal">포유류</string>
     <string name="animals">Animals</string>
+    <string name="gallery">Gallery</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="my_page">My Page</string>
+    <string name="logout">로그아웃</string>
 </resources>
