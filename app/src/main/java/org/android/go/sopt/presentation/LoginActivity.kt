@@ -72,7 +72,7 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
 
         if (binding.etId.text.toString() == id && binding.etPassword.text.toString() == password) {
             showToast(this, getString(R.string.login_success))
-            val intent = Intent(this, MyPageActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("specialty", specialty)
             startActivity(intent)
@@ -106,7 +106,7 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         val savedSpecialty = GoSoptApplication.prefs.getUserInfo()?.specialty
 
         if (savedId != null && savedPassword != null) {
-            val intent = Intent(this, MyPageActivity::class.java).apply {
+            val intent = Intent(this, HomeActivity::class.java).apply {
                 putExtra("name", savedName)
                 putExtra("specialty", savedSpecialty)
             }
