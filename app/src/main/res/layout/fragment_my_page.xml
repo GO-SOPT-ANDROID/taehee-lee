@@ -15,20 +15,21 @@
             android:id="@+id/iv_tibet"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="80dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_tibet"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize15Percent" />
 
         <TextView
             android:id="@+id/tv_name_title"
             style="@style/TextAppearance.HaeTi.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="24dp"
             android:text="이름"
             app:layout_constraintStart_toStartOf="@+id/iv_tibet"
             app:layout_constraintTop_toBottomOf="@+id/iv_tibet" />
