@@ -52,7 +52,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         )
         R.id.gallery_menu -> replace<GalleryFragment>(R.id.home_container)
         R.id.search_menu -> replace<SearchFragment>(R.id.home_container)
-        R.id.my_page_menu -> replace<MyPageFragment>(R.id.my_page_menu)
+        R.id.my_page_menu -> replace<MyPageFragment>(R.id.home_container)
         else -> Timber.e(IllegalArgumentException("Not found menu item id"))
     }
 
