@@ -122,7 +122,7 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="6dp"
                     android:hint="@string/enter_specialty"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:inputType="text"
                     android:maxLines="1"
                     app:layout_constraintTop_toBottomOf="@+id/tv_specialty_title" />
