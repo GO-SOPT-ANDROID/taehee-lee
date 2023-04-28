@@ -6,6 +6,7 @@ import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityHomeBinding
 import org.android.go.sopt.presentation.gallery.GalleryFragment
 import org.android.go.sopt.presentation.home.HomeFragment
+import org.android.go.sopt.presentation.mypage.MyPageFragment
 import org.android.go.sopt.presentation.search.SearchFragment
 import org.android.go.sopt.util.extension.replace
 import timber.log.Timber
@@ -51,6 +52,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         )
         R.id.gallery_menu -> replace<GalleryFragment>(R.id.home_container)
         R.id.search_menu -> replace<SearchFragment>(R.id.home_container)
+        R.id.my_page_menu -> replace<MyPageFragment>(R.id.my_page_menu)
         else -> Timber.e(IllegalArgumentException("Not found menu item id"))
     }
 
