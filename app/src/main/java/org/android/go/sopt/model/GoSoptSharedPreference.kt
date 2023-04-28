@@ -45,6 +45,12 @@ class GoSoptSharedPreference(context: Context) {
 
         }
     }
+    fun deleteUserInfo() {
+        with(dataStore.edit()) {
+            clear()
+            commit()
+        }
+    }
 
     companion object {
         private const val FILE_NAME = "GO-SOPT"
