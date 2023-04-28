@@ -2,23 +2,18 @@ package org.android.go.sopt.presentation.home
 
 import android.os.Bundle
 import android.os.Parcelable
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import org.android.go.sopt.R
+import org.android.go.sopt.base.BindingFragment
 import org.android.go.sopt.databinding.FragmentHomeBinding
 import org.android.go.sopt.presentation.RecyclerViewScrollable
 import org.android.go.sopt.util.extension.parcelable
 
-class HomeFragment : Fragment(), RecyclerViewScrollable {
+class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home),
+    RecyclerViewScrollable {
     private var recyclerViewState: Parcelable? = null
-
-    private var _binding: FragmentHomeBinding? = null
-    private val binding: FragmentHomeBinding
-        get() = requireNotNull(_binding) { "앗 ! _binding이 null이다 !" }
-
     private val viewModel by viewModels<HomeViewModel>()
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -29,16 +24,6 @@ class HomeFragment : Fragment(), RecyclerViewScrollable {
         }
     }
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAdapter()
@@ -46,15 +31,6 @@ class HomeFragment : Fragment(), RecyclerViewScrollable {
         binding.rvAnimals.layoutManager?.onRestoreInstanceState(recyclerViewState)
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
     private fun setAdapter() {
         val animalTitleAdapter = TitleAdapter(requireContext())
         val animalAdapter = AnimalAdapter(requireContext())

@@ -1,14 +1,14 @@
-package org.android.go.sopt.presentation.search
+package org.android.go.sopt.presentation.mypage
 
 import android.os.Bundle
 import android.view.View
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingFragment
-import org.android.go.sopt.databinding.FragmentSearchBinding
+import org.android.go.sopt.databinding.FragmentMyPageBinding
 
-class SearchFragment : BindingFragment<FragmentSearchBinding>(R.layout.fragment_search) {
+class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
-
 }
