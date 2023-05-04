@@ -1,4 +1,4 @@
-package org.android.go.sopt.presentation
+package org.android.go.sopt.presentation.signup
 
 import android.app.Activity
 import android.content.Context
@@ -8,7 +8,7 @@ import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivitySignUpBinding
 import org.android.go.sopt.model.UserInfo
-import org.android.go.sopt.presentation.LoginActivity.Companion.USER_INFO
+import org.android.go.sopt.presentation.login.LoginActivity.Companion.USER_INFO
 
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
     override fun onCreate(savedInstanceState: Bundle?) {

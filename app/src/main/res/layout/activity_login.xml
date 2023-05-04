@@ -11,7 +11,7 @@
         android:id="@+id/layout_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.LoginActivity">
+        tools:context=".presentation.login.LoginActivity">
 
         <TextView
             android:id="@+id/tv_go_sopt"

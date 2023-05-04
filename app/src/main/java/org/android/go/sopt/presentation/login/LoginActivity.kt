@@ -1,4 +1,4 @@
-package org.android.go.sopt.presentation
+package org.android.go.sopt.presentation.login
 
 import android.app.Activity
 import android.content.Context
@@ -12,6 +12,8 @@ import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.model.UserInfo
+import org.android.go.sopt.presentation.HomeActivity
+import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showToast
 
