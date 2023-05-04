@@ -1,4 +1,4 @@
-package org.android.go.sopt.model
+package org.android.go.sopt.domain.model
 
 import androidx.annotation.DrawableRes
 
