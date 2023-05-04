@@ -1,7 +1,7 @@
 package org.android.go.sopt
 
 import android.app.Application
-import org.android.go.sopt.model.GoSoptSharedPreference
+import org.android.go.sopt.data.local.GoSoptSharedPreference
 import timber.log.Timber
 
 class GoSoptApplication: Application() {

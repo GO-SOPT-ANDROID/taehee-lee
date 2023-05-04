@@ -11,7 +11,7 @@ import org.android.go.sopt.GoSoptApplication
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
-import org.android.go.sopt.model.UserInfo
+import org.android.go.sopt.domain.model.UserInfo
 import org.android.go.sopt.presentation.HomeActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.extension.parcelable
@@ -23,7 +23,6 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
     private var password: String? = null
     private var name: String? = null
     private var specialty: String? = null
-    var userInput: UserInfo? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -43,7 +43,6 @@ class GoSoptSharedPreference(context: Context) {
             if (name == null || id == null) return null
 
             return UserInfo(id, password, name, specialty)
-
         }
     }
     fun deleteUserInfo() {

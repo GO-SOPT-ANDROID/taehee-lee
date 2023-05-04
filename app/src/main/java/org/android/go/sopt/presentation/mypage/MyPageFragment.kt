@@ -8,7 +8,7 @@ import org.android.go.sopt.GoSoptApplication
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingFragment
 import org.android.go.sopt.databinding.FragmentMyPageBinding
-import org.android.go.sopt.model.GoSoptSharedPreference
+import org.android.go.sopt.data.local.GoSoptSharedPreference
 import org.android.go.sopt.presentation.login.LoginActivity
 import org.android.go.sopt.util.extension.showToast
 

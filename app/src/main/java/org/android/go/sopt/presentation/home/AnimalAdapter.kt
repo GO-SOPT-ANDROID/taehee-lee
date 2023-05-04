@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.android.go.sopt.databinding.ItemAnimalBinding
-import org.android.go.sopt.model.Animal
+import org.android.go.sopt.domain.model.Animal
 
 class AnimalAdapter(context: Context) :
     ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(AnimalDiffCallback()) {

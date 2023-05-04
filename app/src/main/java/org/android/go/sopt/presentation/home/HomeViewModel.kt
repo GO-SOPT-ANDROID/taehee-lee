@@ -2,7 +2,7 @@ package org.android.go.sopt.presentation.home
 
 import androidx.lifecycle.ViewModel
 import org.android.go.sopt.R
-import org.android.go.sopt.model.Animal
+import org.android.go.sopt.domain.model.Animal
 
 class HomeViewModel : ViewModel() {
 
