@@ -1,10 +1,11 @@
-package org.android.go.sopt.model
+package org.android.go.sopt.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import org.android.go.sopt.BuildConfig
+import org.android.go.sopt.domain.model.UserInfo
 
 class GoSoptSharedPreference(context: Context) {
 
@@ -58,6 +59,5 @@ class GoSoptSharedPreference(context: Context) {
         private const val PREF_USER_PASSWORD = "userPassword"
         private const val PREF_USER_NAME = "userName"
         private const val PREF_USER_SPECIALTY = "userSpecialty"
-
     }
 }
