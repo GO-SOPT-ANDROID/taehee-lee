@@ -5,6 +5,9 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'org.android.go.sopt'
     compileSdk 33
@@ -15,6 +18,8 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "SIGN_UP_BASE_URL", properties["SIGN_UP_BASE_URL"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
