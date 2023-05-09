@@ -3,14 +3,15 @@ package org.android.go.sopt.presentation
 import android.os.Bundle
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
-import org.android.go.sopt.databinding.ActivityMyPageBinding
+import org.android.go.sopt.databinding.ActivityHomeBinding
 import org.android.go.sopt.presentation.gallery.GalleryFragment
 import org.android.go.sopt.presentation.home.HomeFragment
+import org.android.go.sopt.presentation.mypage.MyPageFragment
 import org.android.go.sopt.presentation.search.SearchFragment
 import org.android.go.sopt.util.extension.replace
 import timber.log.Timber
 
-class MyPageActivity : BindingActivity<ActivityMyPageBinding>(R.layout.activity_my_page) {
+class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -51,6 +52,7 @@ class MyPageActivity : BindingActivity<ActivityMyPageBinding>(R.layout.activity_
         )
         R.id.gallery_menu -> replace<GalleryFragment>(R.id.home_container)
         R.id.search_menu -> replace<SearchFragment>(R.id.home_container)
+        R.id.my_page_menu -> replace<MyPageFragment>(R.id.home_container)
         else -> Timber.e(IllegalArgumentException("Not found menu item id"))
     }
 

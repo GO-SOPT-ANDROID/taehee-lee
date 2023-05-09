@@ -5,17 +5,25 @@
         android:id="@+id/gallery_menu"
         android:icon="@drawable/ic_gallery_white"
         android:iconTint="@color/primary"
-        android:title="Gallery" />
+        android:title="@string/gallery" />
 
     <item
         android:id="@+id/home_menu"
         android:icon="@drawable/ic_home_white"
         android:iconTint="@color/primary"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/search_menu"
         android:icon="@drawable/ic_search_white"
         android:iconTint="@color/primary"
-        android:title="Search" />
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/my_page_menu"
+        android:icon="@drawable/ic_account_white"
+        android:iconTint="@color/primary"
+        android:title="@string/my_page" />
+
+
 </menu>

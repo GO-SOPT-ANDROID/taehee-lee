@@ -5,17 +5,20 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="org.android.go.sopt.presentation.signup.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_sign_up"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.SignUpActivity">
+        tools:context=".presentation.signup.SignUpActivity">
 
         <TextView
             android:id="@+id/tv_sign_up_title"
-            style="@style/TextAppearance.Title.Large"
+            style="@style/TextAppearance.HaeTi.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -39,7 +42,7 @@
 
                 <TextView
                     android:id="@+id/tv_id_title"
-                    style="@style/TextAppearance.SubTitle.large.grey"
+                    style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -57,13 +60,14 @@
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:maxLines="1"
+                    android:text="@={viewModel.id}"
                     app:layout_constraintTop_toBottomOf="@+id/tv_id_title" />
 
                 <requestFocus />
 
                 <TextView
                     android:id="@+id/tv_password_title"
-                    style="@style/TextAppearance.SubTitle.large.grey"
+                    style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -81,11 +85,12 @@
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:text="@={viewModel.password}"
                     app:layout_constraintTop_toBottomOf="@+id/tv_password_title" />
 
                 <TextView
                     android:id="@+id/tv_name_title"
-                    style="@style/TextAppearance.SubTitle.large.grey"
+                    style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -103,11 +108,12 @@
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:maxLines="1"
+                    android:text="@={viewModel.name}"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name_title" />
 
                 <TextView
                     android:id="@+id/tv_specialty_title"
-                    style="@style/TextAppearance.SubTitle.large.grey"
+                    style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -122,17 +128,15 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="6dp"
                     android:hint="@string/enter_specialty"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:inputType="text"
                     android:maxLines="1"
+                    android:text="@={viewModel.specialty}"
                     app:layout_constraintTop_toBottomOf="@+id/tv_specialty_title" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </ScrollView>
-
 
         <Button
             android:id="@+id/btn_sign_up_complete"
@@ -141,6 +145,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="12dp"
+            app:enabled="@{viewModel.checkSignUpState}"
             android:text="@string/sign_up_complete"
             android:textColor="@color/black"
             android:textSize="16sp"

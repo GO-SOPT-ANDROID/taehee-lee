@@ -1,11 +1,17 @@
 ### 리드미는 주로 블로그, 노션 제출 과제의 링크를 첨부하는데 써주시면 됩니다. 그 외엔 자유롭게 이용해주세요 !
 
 ## 과제 링크 제출란
+
 ### 1주차 심화 과제
 [Activity 생명주기 정리 노션](https://taehi.notion.site/Activity-LifeCycle-31cf23a7be7941419c0130131db68d51)
 
 ### 2주차 심화 과제
 [Fragment 생명주기 정리 노션](https://taehi.notion.site/Fragment-LifeCycle-b25c16ac2d564e1fb5edce1481c0710e)
+
+### 3주차 도전 과제
+[더 다양한 뷰 알아보기 - TimePicker](https://taehi.notion.site/TimePicker-e255f3d5350748bf94e993e330f23548)
+
+
 ## 템플릿 설명
 레포지터리에는 총 2개의 브랜치가 있습니다.
 ### main
