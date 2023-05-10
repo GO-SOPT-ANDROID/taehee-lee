@@ -18,6 +18,7 @@ plugins {
 }
 
 ext{
+    hiltVersion = "2.44"
     coilVersion = "2.2.2"
     viewModelVersion = "2.6.1"
 }

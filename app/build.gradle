@@ -47,6 +47,11 @@ android {
 
 dependencies {
 
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
     // Coil
     implementation "io.coil-kt:coil:$coilVersion"
 
