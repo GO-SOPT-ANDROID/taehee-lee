@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import org.android.go.sopt.base.ID_PATTERN
 import org.android.go.sopt.base.PW_PATTERN
 import org.android.go.sopt.data.local.GoSoptSharedPreference
+import org.android.go.sopt.domain.model.UserInfo
 import org.android.go.sopt.domain.repository.AuthRepository
 import org.android.go.sopt.util.Event
 import javax.inject.Inject
@@ -23,10 +24,15 @@ class AuthViewModel @Inject constructor(
     private val _isCompletedSignUp = MutableLiveData<Event<Boolean>>()
     val isCompletedSignUp: LiveData<Event<Boolean>> get() = _isCompletedSignUp
 
+    private val _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
+    val isCompletedSignIn: LiveData<Event<Boolean>> get() = _isCompletedSignIn
+
     val id = MutableStateFlow("")
     val password = MutableStateFlow("")
     val name = MutableStateFlow("")
     val specialty = MutableStateFlow("")
+
+    var userInput: UserInfo? = null
 
     fun postSignUpResult() {
         viewModelScope.launch {
@@ -35,6 +41,15 @@ class AuthViewModel @Inject constructor(
             _isCompletedSignUp.value = Event(isSuccessful)
         }
     }
+
+    fun postSignInResult() {
+        viewModelScope.launch {
+            val isSuccessful = authRepository.signIn(id.value, password.value)
+            if (isSuccessful) goSoptSharedPreference.setUserInfo(userInput!!)
+            _isCompletedSignIn.value = Event(isSuccessful)
+        }
+    }
+
 
     val checkSignUpState = combine(
         id,
@@ -48,4 +63,8 @@ class AuthViewModel @Inject constructor(
         .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
+
+    fun setUserInfo(userInput: UserInfo) {
+        this.userInput = userInput
+    }
 }
