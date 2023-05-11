@@ -16,6 +16,7 @@ import org.android.go.sopt.domain.model.UserInfo
 import org.android.go.sopt.presentation.HomeActivity
 import org.android.go.sopt.presentation.signup.AuthViewModel
 import org.android.go.sopt.presentation.signup.SignUpActivity
+import org.android.go.sopt.util.EventObserver
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showToast
 
@@ -40,6 +41,7 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         }
 
         autoLogin()
+        observeSignInSuccessful()
 
     }
 
@@ -63,23 +65,24 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
             }
     }
 
-    private fun checkInfoValid() {
-        if (binding.etId.text.toString() == id && binding.etPassword.text.toString() == password) {
-            binding.root.showToast(getString(R.string.login_success))
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("name", name)
-            intent.putExtra("specialty", specialty)
-            startActivity(intent)
-
-        } else {
-            binding.root.showToast(getString(R.string.login_fail))
-        }
+    private fun navigateToHome() {
+        binding.root.showToast(getString(R.string.login_success))
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun clickLoginButton() {
         binding.btnLogin.setOnClickListener {
-            checkInfoValid()
+            viewModel.postSignInResult()
         }
+    }
+
+    private fun observeSignInSuccessful() {
+        viewModel.isCompletedSignIn.observe(this, EventObserver { isSuccess ->
+            if (isSuccess) {
+                navigateToHome()
+            }
+        })
     }
 
     private fun clickSignUpButton() {
