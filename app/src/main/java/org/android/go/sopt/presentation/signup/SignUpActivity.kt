@@ -16,7 +16,7 @@ import org.android.go.sopt.util.EventObserver
 @AndroidEntryPoint
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
 
-    private val viewModel by viewModels<SignUpViewModel>()
+    private val viewModel by viewModels<AuthViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

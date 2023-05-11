@@ -15,7 +15,7 @@ import org.android.go.sopt.util.Event
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(
+class AuthViewModel @Inject constructor(
     private val goSoptSharedPreference: GoSoptSharedPreference,
     private val authRepository: AuthRepository
 ) : ViewModel() {
