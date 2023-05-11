@@ -10,9 +10,9 @@ import javax.inject.Inject
 class AuthDataSource @Inject constructor(
     private val authService: AuthService
 ) {
-    fun signUp(signUpRequest: RequestSignUpDto): ResponseSignUpDto =
+    suspend fun signUp(signUpRequest: RequestSignUpDto): ResponseSignUpDto =
         authService.signUp(signUpRequest)
 
-    fun signIn(signInRequest: RequestSignInDto): ResponseSignInDto =
+    suspend fun signIn(signInRequest: RequestSignInDto): ResponseSignInDto =
         authService.signIn(signInRequest)
 }
