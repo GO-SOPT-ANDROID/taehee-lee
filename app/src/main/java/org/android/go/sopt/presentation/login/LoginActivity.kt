@@ -7,17 +7,21 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import org.android.go.sopt.GoSoptApplication
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.domain.model.UserInfo
 import org.android.go.sopt.presentation.HomeActivity
+import org.android.go.sopt.presentation.signup.AuthViewModel
 import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showToast
 
 class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
+    private val viewModel by viewModels<AuthViewModel>()
+
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private var id: String? = null
     private var password: String? = null
@@ -49,7 +53,7 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
 
                 if (userInfo != null) {
                     binding.root.showToast(getString(R.string.sign_up_complete_message))
-                    GoSoptApplication.prefs.setUserInfo(userInfo)
+                    viewModel.setUserInfo(userInfo)
                     id = userInfo.id
                     password = userInfo.password
                     name = userInfo.name
