@@ -1,4 +1,4 @@
-package org.android.go.sopt.data.datasource
+package org.android.go.sopt.data.datasource.remote
 
 import org.android.go.sopt.data.model.RequestSignInDto
 import org.android.go.sopt.data.model.RequestSignUpDto
