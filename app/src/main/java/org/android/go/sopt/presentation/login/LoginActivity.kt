@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.android.go.sopt.GoSoptApplication
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
@@ -20,6 +21,7 @@ import org.android.go.sopt.util.EventObserver
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showToast
 
+@AndroidEntryPoint
 class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
     private val viewModel by viewModels<AuthViewModel>()
 
@@ -32,6 +34,9 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner
 
         setSignUpResult()
         clickLoginButton()
@@ -81,6 +86,8 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         viewModel.isCompletedSignIn.observe(this, EventObserver { isSuccess ->
             if (isSuccess) {
                 navigateToHome()
+            } else {
+                binding.root.showToast(getString(R.string.login_fail))
             }
         })
     }
