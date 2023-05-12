@@ -13,12 +13,12 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_animals"
+            android:id="@+id/rv_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_animal" />
+            tools:listitem="@layout/item_user" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
