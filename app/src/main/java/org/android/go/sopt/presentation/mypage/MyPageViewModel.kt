@@ -10,7 +10,6 @@ class MyPageViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ): ViewModel() {
 
-
     fun logOut(){
         authRepository.clearPref()
     }
