@@ -50,13 +50,6 @@ class GoSoptSharedPreference @Inject constructor(@ApplicationContext context: Co
         }
     }
 
-    fun deleteUserInfo() {
-        with(dataStore.edit()) {
-            clear()
-            commit()
-        }
-    }
-
     companion object {
         private const val FILE_NAME = "GO-SOPT"
         private const val PREF_USER_ID = "userId"
