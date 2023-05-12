@@ -32,7 +32,8 @@ class AuthViewModel @Inject constructor(
     val name = MutableStateFlow("")
     val specialty = MutableStateFlow("")
 
-    var userInput: UserInfo? = null
+    private var _isAutoMode = MutableStateFlow(authRepository.getAutoMode())
+    val isAutoMode = _isAutoMode.asStateFlow()
 
     fun postSignUpResult() {
         viewModelScope.launch {
@@ -45,7 +46,9 @@ class AuthViewModel @Inject constructor(
     fun postSignInResult() {
         viewModelScope.launch {
             val isSuccessful = authRepository.signIn(id.value, password.value)
-            if (isSuccessful) goSoptSharedPreference.setUserInfo(userInput!!)
+            if (isSuccessful) {
+                authRepository.setAutoMode(true)
+            }
             _isCompletedSignIn.value = Event(isSuccessful)
         }
     }
@@ -65,6 +68,6 @@ class AuthViewModel @Inject constructor(
 
 
     fun setUserInfo(userInput: UserInfo) {
-        this.userInput = userInput
+        goSoptSharedPreference.setUserInfo(userInput)
     }
 }
