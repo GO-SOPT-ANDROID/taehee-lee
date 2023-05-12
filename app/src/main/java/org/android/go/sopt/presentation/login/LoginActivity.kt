@@ -9,7 +9,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import org.android.go.sopt.GoSoptApplication
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
@@ -20,6 +19,7 @@ import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.EventObserver
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showToast
+import timber.log.Timber
 
 @AndroidEntryPoint
 class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
@@ -45,7 +45,7 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
             hideKeyboard()
         }
 
-        autoLogin()
+        checkAutoLogin()
         observeSignInSuccessful()
 
     }
@@ -103,23 +103,16 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 
-    private fun autoLogin() {
-        val savedId = GoSoptApplication.prefs.getUserInfo()?.id
-        val savedPassword = GoSoptApplication.prefs.getUserInfo()?.password
-        val savedName = GoSoptApplication.prefs.getUserInfo()?.name
-        val savedSpecialty = GoSoptApplication.prefs.getUserInfo()?.specialty
 
-        if (savedId != null && savedPassword != null) {
-            val intent = Intent(this, HomeActivity::class.java).apply {
-                putExtra("name", savedName)
-                putExtra("specialty", savedSpecialty)
-            }
+    private fun checkAutoLogin() {
+        Timber.e(viewModel.isAutoMode.value.toString())
+        if (viewModel.isAutoMode.value) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            if (!isFinishing) finish()
             binding.root.showToast(getString(R.string.auto_login_success_message))
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
         }
     }
+
 
     companion object {
         const val USER_INFO = "user_info"
