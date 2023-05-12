@@ -21,6 +21,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
     private const val SIGN_UP_BASE_URL: String = BuildConfig.SIGN_UP_BASE_URL
+    private const val REQRES_BASE_URL: String = BuildConfig.REQRES_BASE_URL
 
     @Provides
     @Singleton
@@ -37,6 +38,16 @@ object RetrofitModule {
     @Retrofit2(BaseUrlType.SOPT)
     fun provideSoptRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
         .baseUrl(SIGN_UP_BASE_URL)
+        .client(client)
+        .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
+        .build()
+
+    @ExperimentalSerializationApi
+    @Provides
+    @Singleton
+    @Retrofit2(BaseUrlType.REQRES)
+    fun provideReqResRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
+        .baseUrl(REQRES_BASE_URL)
         .client(client)
         .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
         .build()
