@@ -23,6 +23,7 @@ android {
 
         buildConfigField "String", "SIGN_UP_BASE_URL", properties["SIGN_UP_BASE_URL"]
         buildConfigField "String", "REQRES_BASE_URL", properties["REQRES_BASE_URL"]
+        buildConfigField "String", "KAKAO_REST_API_KEY", properties["KAKAO_REST_API_KEY"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
