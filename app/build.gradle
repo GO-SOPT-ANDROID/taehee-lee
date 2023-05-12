@@ -22,6 +22,7 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "SIGN_UP_BASE_URL", properties["SIGN_UP_BASE_URL"]
+        buildConfigField "String", "REQRES_BASE_URL", properties["REQRES_BASE_URL"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
