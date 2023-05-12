@@ -53,4 +53,8 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
 
     }
 
+    companion object {
+        fun newInstance() = MyPageFragment()
+    }
+
 }
