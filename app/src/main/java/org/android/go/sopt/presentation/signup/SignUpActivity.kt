@@ -36,11 +36,12 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private fun passUserData() {
         if (binding.btnSignUpComplete.isEnabled) {
             val userInfo = UserInfo(
-                viewModel.id.toString(),
-                viewModel.password.toString(),
-                viewModel.name.toString(),
-                viewModel.specialty.toString()
+                viewModel.id.value,
+                viewModel.password.value,
+                viewModel.name.value,
+                viewModel.specialty.value
             )
+            viewModel.setUserInfo(userInfo)
 
             intent.putExtra(USER_INFO, userInfo)
             setResult(Activity.RESULT_OK, intent)
