@@ -11,6 +11,8 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.android.go.sopt.BuildConfig
+import org.android.go.sopt.BuildConfig.REQRES_BASE_URL
+import org.android.go.sopt.BuildConfig.SIGN_UP_BASE_URL
 import org.android.go.sopt.data.type.BaseUrlType
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
@@ -20,8 +22,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
-    private const val SIGN_UP_BASE_URL: String = BuildConfig.SIGN_UP_BASE_URL
-    private const val REQRES_BASE_URL: String = BuildConfig.REQRES_BASE_URL
+
+//    private const val KAKAO_BASE_URL: String = BuildConfig.
 
     @Provides
     @Singleton
