@@ -1,6 +1,7 @@
 package org.android.go.sopt.presentation
 
 import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityHomeBinding
@@ -11,6 +12,7 @@ import org.android.go.sopt.presentation.search.SearchFragment
 import org.android.go.sopt.util.extension.replace
 import timber.log.Timber
 
+@AndroidEntryPoint
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

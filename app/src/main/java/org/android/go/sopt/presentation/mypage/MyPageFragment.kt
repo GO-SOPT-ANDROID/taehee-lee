@@ -4,15 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.android.go.sopt.GoSoptApplication
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingFragment
 import org.android.go.sopt.databinding.FragmentMyPageBinding
-import org.android.go.sopt.data.local.GoSoptSharedPreference
 import org.android.go.sopt.presentation.login.LoginActivity
 import org.android.go.sopt.util.extension.showToast
 
+@AndroidEntryPoint
 class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
+    private val myPageViewModel by viewModels<MyPageViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setMyPage()
@@ -20,8 +24,8 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
     }
 
     private fun setMyPage() {
-        binding.tvName.text = GoSoptApplication.prefs.getUserInfo()?.name
-        binding.tvSpecialty.text = GoSoptApplication.prefs.getUserInfo()?.specialty
+        binding.tvName.text = GoSoptApplication.prefs.getUserInfo()?.name.toString()
+        binding.tvSpecialty.text = GoSoptApplication.prefs.getUserInfo()?.specialty.toString()
     }
 
     private fun clickLogoutButton() {
@@ -40,7 +44,7 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
                 binding.root.showToast(getString(R.string.cancel_logout))
             }
             .setPositiveButton("예") { _, _ ->
-                deleteUserData()
+                myPageViewModel.logOut()
                 binding.root.showToast(getString(R.string.logout_done))
                 startActivity(Intent(requireContext(), LoginActivity::class.java))
             }
@@ -49,7 +53,8 @@ class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_
 
     }
 
-    private fun deleteUserData() {
-        GoSoptSharedPreference(requireContext()).deleteUserInfo()
+    companion object {
+        fun newInstance() = MyPageFragment()
     }
+
 }

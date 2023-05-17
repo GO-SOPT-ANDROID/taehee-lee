@@ -7,17 +7,24 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import org.android.go.sopt.GoSoptApplication
+import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.domain.model.UserInfo
 import org.android.go.sopt.presentation.HomeActivity
+import org.android.go.sopt.presentation.signup.AuthViewModel
 import org.android.go.sopt.presentation.signup.SignUpActivity
+import org.android.go.sopt.util.EventObserver
 import org.android.go.sopt.util.extension.parcelable
 import org.android.go.sopt.util.extension.showToast
+import timber.log.Timber
 
+@AndroidEntryPoint
 class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
+    private val viewModel by viewModels<AuthViewModel>()
+
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private var id: String? = null
     private var password: String? = null
@@ -28,6 +35,9 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner
+
         setSignUpResult()
         clickLoginButton()
         clickSignUpButton()
@@ -35,7 +45,8 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
             hideKeyboard()
         }
 
-        autoLogin()
+        checkAutoLogin()
+        observeSignInSuccessful()
 
     }
 
@@ -49,7 +60,7 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
 
                 if (userInfo != null) {
                     binding.root.showToast(getString(R.string.sign_up_complete_message))
-                    GoSoptApplication.prefs.setUserInfo(userInfo)
+                    viewModel.setUserInfo(userInfo)
                     id = userInfo.id
                     password = userInfo.password
                     name = userInfo.name
@@ -59,23 +70,26 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
             }
     }
 
-    private fun checkInfoValid() {
-        if (binding.etId.text.toString() == id && binding.etPassword.text.toString() == password) {
-            binding.root.showToast(getString(R.string.login_success))
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("name", name)
-            intent.putExtra("specialty", specialty)
-            startActivity(intent)
-
-        } else {
-            binding.root.showToast(getString(R.string.login_fail))
-        }
+    private fun navigateToHome() {
+        binding.root.showToast(getString(R.string.login_success))
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun clickLoginButton() {
         binding.btnLogin.setOnClickListener {
-            checkInfoValid()
+            viewModel.postSignInResult()
         }
+    }
+
+    private fun observeSignInSuccessful() {
+        viewModel.isCompletedSignIn.observe(this, EventObserver { isSuccess ->
+            if (isSuccess) {
+                navigateToHome()
+            } else {
+                binding.root.showToast(getString(R.string.login_fail))
+            }
+        })
     }
 
     private fun clickSignUpButton() {
@@ -89,23 +103,16 @@ class LoginActivity() : BindingActivity<ActivityLoginBinding>(R.layout.activity_
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 
-    private fun autoLogin() {
-        val savedId = GoSoptApplication.prefs.getUserInfo()?.id
-        val savedPassword = GoSoptApplication.prefs.getUserInfo()?.password
-        val savedName = GoSoptApplication.prefs.getUserInfo()?.name
-        val savedSpecialty = GoSoptApplication.prefs.getUserInfo()?.specialty
 
-        if (savedId != null && savedPassword != null) {
-            val intent = Intent(this, HomeActivity::class.java).apply {
-                putExtra("name", savedName)
-                putExtra("specialty", savedSpecialty)
-            }
+    private fun checkAutoLogin() {
+        Timber.e(viewModel.isAutoMode.value.toString())
+        if (viewModel.isAutoMode.value) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            if (!isFinishing) finish()
             binding.root.showToast(getString(R.string.auto_login_success_message))
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
         }
     }
+
 
     companion object {
         const val USER_INFO = "user_info"

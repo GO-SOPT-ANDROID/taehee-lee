@@ -21,7 +21,7 @@
     </style>
 
     <style name="TextAppearance.HaeTi" parent="">
-        <item name="android:fontFamily">@font/haeti_font</item>
+        <item name="android:fontFamily">@font/bold_font</item>
         <item name="fontWeight">600</item>
         <item name="android:textColor">@color/black</item>
     </style>

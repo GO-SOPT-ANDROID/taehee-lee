@@ -4,10 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import dagger.hilt.android.qualifiers.ApplicationContext
 import org.android.go.sopt.BuildConfig
 import org.android.go.sopt.domain.model.UserInfo
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class GoSoptSharedPreference(context: Context) {
+@Singleton
+class GoSoptSharedPreference @Inject constructor(@ApplicationContext context: Context) {
 
     private val masterKey = MasterKey
         .Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
@@ -43,12 +47,6 @@ class GoSoptSharedPreference(context: Context) {
             if (name == null || id == null) return null
 
             return UserInfo(id, password, name, specialty)
-        }
-    }
-    fun deleteUserInfo() {
-        with(dataStore.edit()) {
-            clear()
-            commit()
         }
     }
 
