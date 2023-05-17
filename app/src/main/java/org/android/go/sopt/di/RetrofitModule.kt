@@ -11,8 +11,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.android.go.sopt.BuildConfig
-import org.android.go.sopt.BuildConfig.REQRES_BASE_URL
-import org.android.go.sopt.BuildConfig.SIGN_UP_BASE_URL
+import org.android.go.sopt.BuildConfig.*
 import org.android.go.sopt.data.type.BaseUrlType
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
@@ -22,8 +21,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
-
-//    private const val KAKAO_BASE_URL: String = BuildConfig.
 
     @Provides
     @Singleton
@@ -50,6 +47,16 @@ object RetrofitModule {
     @Retrofit2(BaseUrlType.REQRES)
     fun provideReqResRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
         .baseUrl(REQRES_BASE_URL)
+        .client(client)
+        .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
+        .build()
+
+    @ExperimentalSerializationApi
+    @Provides
+    @Singleton
+    @Retrofit2(BaseUrlType.KAKAO)
+    fun provideKakaoService(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
+        .baseUrl(KAKAO_BASE_URL)
         .client(client)
         .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
         .build()
