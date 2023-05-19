@@ -51,15 +51,15 @@ object RetrofitModule {
         .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
         .build()
 
-    @ExperimentalSerializationApi
-    @Provides
-    @Singleton
-    @Retrofit2(BaseUrlType.KAKAO)
-    fun provideKakaoService(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
-        .baseUrl(KAKAO_BASE_URL)
-        .client(client)
-        .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
-        .build()
+//    @ExperimentalSerializationApi
+//    @Provides
+//    @Singleton
+//    @Retrofit2(BaseUrlType.KAKAO)
+//    fun provideKakaoSearchService(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
+//        .baseUrl(KAKAO_BASE_URL)
+//        .client(client)
+//        .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
+//        .build()
 
     @Provides
     @Singleton
