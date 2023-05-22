@@ -25,4 +25,9 @@ object ServiceModule {
     @Singleton
     fun provideFollowerService(@Retrofit2(BaseUrlType.REQRES) retrofit: Retrofit): FollowerService =
         retrofit.create()
+
+//    @Provides
+//    @Singleton
+//    fun provideKakaoSearchService(@Retrofit2(BaseUrlType.KAKAO) retrofit: Retrofit): KaKaoService =
+//        retrofit.create()
 }
