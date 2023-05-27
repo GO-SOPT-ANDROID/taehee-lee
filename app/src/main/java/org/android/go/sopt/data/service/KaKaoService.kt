@@ -10,7 +10,6 @@ import retrofit2.http.Query
 interface KaKaoService {
     @GET("/v2/search/web")
     fun getSearchWeb(
-        @Header("Authorization") key: String = "KakaoAK $KAKAO_REST_API_KEY",
         @Query("query") keyword: String
     ): Call<KakaoSearchResponseDto>
 }

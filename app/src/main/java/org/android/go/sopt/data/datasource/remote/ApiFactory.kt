@@ -6,15 +6,19 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.android.go.sopt.BuildConfig.KAKAO_BASE_URL
+import org.android.go.sopt.data.repository.TokenInterceptor
 import org.android.go.sopt.data.service.KaKaoService
 import retrofit2.Retrofit
 
 object ApiFactory {
 
     private val client by lazy {
-        OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }).build()
+        OkHttpClient.Builder()
+            .addInterceptor(TokenInterceptor())
+            .addInterceptor(HttpLoggingInterceptor()
+                .apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                }).build()
     }
 
     val retrofitForKakao: Retrofit by lazy {
