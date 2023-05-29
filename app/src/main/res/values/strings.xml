@@ -29,4 +29,8 @@
     <string name="logout_done">로그아웃 하였습니다.</string>
     <string name="ask_logout">로그아웃 하시겠습니까?</string>
     <string name="followers">Followers</string>
+    <string name="id_helper_text">숫자와 영문자 조합으로 6~10자를 사용해 주세요.</string>
+    <string name="mock_id">tei9999</string>
+    <string name="pw_helper_text">숫자,영문자,특수문자 조합으로 8~12자를 사용해 주세요.</string>
+    <string name="name_specialty_helper_text">한 글자 이상 입력해 주세요.</string>
 </resources>
