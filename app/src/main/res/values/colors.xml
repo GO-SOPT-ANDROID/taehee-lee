@@ -282,4 +282,5 @@
     <color name="blue_grey_700">#455a64</color>
     <color name="blue_grey_800">#37474f</color>
     <color name="blue_grey_900">#263238</color>
+    <color name="go_sopt_color">#0C0D0F</color>
 </resources>
