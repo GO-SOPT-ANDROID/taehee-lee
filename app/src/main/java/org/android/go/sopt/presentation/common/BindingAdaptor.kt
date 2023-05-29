@@ -1,6 +1,7 @@
 package org.android.go.sopt.presentation.common
 
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
@@ -31,12 +32,26 @@ fun setBoxStrokeColor(textInputLayout: TextInputLayout, isValid: String?) {
                 ContextCompat.getColor(textInputLayout.context, R.color.primary)
             }
 
-            else -> ContextCompat.getColor(textInputLayout.context, R.color.red_400)
+            else -> ContextCompat.getColor(textInputLayout.context, R.color.error)
         }
 }
-
 
 @BindingAdapter("imageUrl")
 fun loadImage(view: ShapeableImageView, imageUrl: String) {
     view.load(imageUrl)
+}
+
+@BindingAdapter("helperTextColor")
+fun setHelperTextColor(textView: TextView, isValid: String?) {
+    textView.setTextColor(
+        when (isValid) {
+            "empty", "valid" -> {
+                ContextCompat.getColor(textView.context, R.color.text_helper)
+            }
+            null -> {
+                ContextCompat.getColor(textView.context, R.color.text_helper)
+            }
+            else -> ContextCompat.getColor(textView.context, R.color.error)
+        }
+    )
 }
