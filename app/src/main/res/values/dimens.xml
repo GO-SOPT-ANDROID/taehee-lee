@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="bnv_height">56dp</dimen>
+    <dimen name="edit_text_radius">8dp</dimen>
+    <dimen name="button_height">56dp</dimen>
 </resources>
