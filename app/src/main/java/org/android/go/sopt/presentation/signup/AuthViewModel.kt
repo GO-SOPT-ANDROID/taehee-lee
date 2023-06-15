@@ -5,7 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.android.go.sopt.base.ID_PATTERN
 import org.android.go.sopt.base.PW_PATTERN
@@ -53,6 +60,25 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    val checkIdState = id.debounce(300L)
+        .distinctUntilChanged()
+        .map { if (it.isNullOrEmpty()) "empty" else if (it.matches(Regex(ID_PATTERN))) "valid" else "invalid" }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+
+    val checkPasswordState = password.debounce(300L)
+        .distinctUntilChanged()
+        .map { if (it.isNullOrEmpty()) "empty" else if (it.matches(Regex(PW_PATTERN))) "valid" else "invalid" }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+
+    val checkNameState = name.debounce(300L)
+        .distinctUntilChanged()
+        .map { if (it.isNullOrEmpty()) "empty" else if (it.isNotBlank()) "valid" else "invalid" }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+
+    val checkSpecialtyState = specialty.debounce(300L)
+        .distinctUntilChanged()
+        .map { if (it.isNullOrEmpty()) "empty" else if (it.isNotBlank()) "valid" else "invalid" }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     val checkSignUpState = combine(
         id,
@@ -65,7 +91,6 @@ class AuthViewModel @Inject constructor(
         .debounce(300L)
         .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
-
 
     fun setUserInfo(userInput: UserInfo) {
         goSoptSharedPreference.setUserInfo(userInput)

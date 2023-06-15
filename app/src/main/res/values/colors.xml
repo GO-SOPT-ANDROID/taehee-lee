@@ -8,11 +8,14 @@
     <color name="secondary">#9ED5C5</color>
     <color name="tertiary">#8EC3B0</color>
 
+    <color name="text_helper">#8E9398</color>
+    <color name="text_input_background">#F3F5F7</color>
+
     <color name="red_50">#fde0dc</color>
     <color name="red_100">#f9bdbb</color>
     <color name="red_200">#f69988</color>
     <color name="red_300">#f36c60</color>
-    <color name="red_400">#e84e40</color>
+    <color name="error">#e84e40</color>
     <color name="red_500">#e51c23</color>
     <color name="red_600">#dd191d</color>
     <color name="red_700">#d01716</color>
@@ -282,4 +285,5 @@
     <color name="blue_grey_700">#455a64</color>
     <color name="blue_grey_800">#37474f</color>
     <color name="blue_grey_900">#263238</color>
+    <color name="go_sopt_color">#0C0D0F</color>
 </resources>

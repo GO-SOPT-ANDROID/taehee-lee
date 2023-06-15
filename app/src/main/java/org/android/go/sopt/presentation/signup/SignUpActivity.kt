@@ -26,6 +26,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
 
         clickSignUpCompleteBtn()
         observeSignUpSuccessful()
+        deleteInput()
 
         binding.layoutSignUp.setOnClickListener {
             hideKeyboard()
@@ -66,6 +67,15 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+    }
+
+    private fun deleteInput() {
+        with(binding) {
+            layoutId.setEndIconOnClickListener { etId.setText("") }
+            layoutPassword.setEndIconOnClickListener { etPassword.setText("") }
+            layoutName.setEndIconOnClickListener { etName.setText("") }
+            layoutSpecialty.setEndIconOnClickListener { etSpecialty.setText("") }
+        }
     }
 
 }
