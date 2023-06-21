@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.android.go.sopt.presentation.music.AddMusicViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_music_title"
+            style="@style/TextAppearance.HaeTi.SubTitle"
+            />
+
+        <ImageView
+            android:id="@+id/iv_music_thumbnail"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="64dp"
+            android:contentDescription="@string/music_thumbnail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_music_title"
+            style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="제목"
+            app:layout_constraintStart_toStartOf="@+id/layout_music_title"
+            app:layout_constraintTop_toBottomOf="@id/iv_music_thumbnail" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_music_title"
+            style="@style/textInputLayout_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="6dp"
+            app:boxStrokeWidth="2dp"
+            app:endIconDrawable="@drawable/ic_x"
+            app:endIconMode="custom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_music_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_music_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={viewModel.musicTitle}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="Creep" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_singer"
+            style="@style/TextAppearance.HaeTi.SubTitle.grey_700"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="가수"
+            app:layout_constraintStart_toStartOf="@+id/layout_music_title"
+            app:layout_constraintTop_toBottomOf="@id/layout_music_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_singer"
+            style="@style/textInputLayout_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="6dp"
+            app:boxStrokeWidth="2dp"
+            app:endIconDrawable="@drawable/ic_x"
+            app:endIconMode="custom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_singer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_singer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={viewModel.singer}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="Radiohead" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_gallery_pick_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="50dp"
+            android:paddingVertical="10dp"
+            android:text="이미지 선택하기"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_gallery_send_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="50dp"
+            android:paddingVertical="10dp"
+            android:text="음악 등록하기"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
