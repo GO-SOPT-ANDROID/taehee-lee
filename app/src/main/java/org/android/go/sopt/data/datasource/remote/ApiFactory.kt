@@ -10,6 +10,7 @@ import org.android.go.sopt.BuildConfig.SIGN_UP_BASE_URL
 import org.android.go.sopt.data.repository.TokenInterceptor
 import org.android.go.sopt.data.service.ImageService
 import org.android.go.sopt.data.service.KaKaoService
+import org.android.go.sopt.data.service.MusicService
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -47,4 +48,5 @@ object ApiFactory {
 object ServicePool {
     val kakaoSearchService = ApiFactory.createKakaoService<KaKaoService>()
     val imageService = ApiFactory.createImageService<ImageService>()
+    val musicService = ApiFactory.createImageService<MusicService>()
 }
