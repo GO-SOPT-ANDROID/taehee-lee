@@ -29,7 +29,6 @@ class PlayListViewModel : ViewModel() {
                     _playList.value = it.toMusicList()
                 }, {
                     Timber.e(it.message)
-                    null
                 }
             )
         }

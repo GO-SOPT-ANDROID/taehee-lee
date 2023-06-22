@@ -15,9 +15,17 @@ import retrofit2.Retrofit
 
 object ApiFactory {
 
-    private val client by lazy {
+    private val kakaoClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor(TokenInterceptor())
+            .addInterceptor(HttpLoggingInterceptor()
+                .apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                }).build()
+    }
+
+    private val client by lazy {
+        OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor()
                 .apply {
                     level = HttpLoggingInterceptor.Level.BODY
@@ -27,7 +35,7 @@ object ApiFactory {
     val retrofitForKakao: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(KAKAO_BASE_URL)
-            .client(client)
+            .client(kakaoClient)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
