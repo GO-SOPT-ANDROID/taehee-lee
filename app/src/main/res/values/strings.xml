@@ -33,4 +33,6 @@
     <string name="mock_id">tei9999</string>
     <string name="pw_helper_text">숫자,영문자,특수문자 조합으로 8~12자를 사용해 주세요.</string>
     <string name="name_specialty_helper_text">한 글자 이상 입력해 주세요.</string>
+    <string name="music_thumbnail">앨범표지</string>
+    <string name="add_music_title">음악 등록하기</string>
 </resources>

@@ -5,7 +5,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.android.go.sopt.R
 import org.android.go.sopt.base.BindingActivity
 import org.android.go.sopt.databinding.ActivityHomeBinding
-import org.android.go.sopt.presentation.gallery.GalleryFragment
+import org.android.go.sopt.presentation.music.PlayListFragment
 import org.android.go.sopt.presentation.home.HomeFragment
 import org.android.go.sopt.presentation.mypage.MyPageFragment
 import org.android.go.sopt.presentation.search.SearchFragment
@@ -52,7 +52,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
             R.id.home_container,
             HomeFragment::class.java.simpleName
         )
-        R.id.gallery_menu -> replace<GalleryFragment>(R.id.home_container)
+        R.id.gallery_menu -> replace<PlayListFragment>(R.id.home_container)
         R.id.search_menu -> replace<SearchFragment>(R.id.home_container)
         R.id.my_page_menu -> replace<MyPageFragment>(R.id.home_container)
         else -> Timber.e(IllegalArgumentException("Not found menu item id"))
